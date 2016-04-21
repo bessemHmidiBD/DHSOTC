@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+    <deployment>
+		
+        <dependencies>
+            <!-- Add dependency on log4j, this is not automatic dependency, it has to be explicitly defined, like follows: -->
+            <module name="org.apache.log4j" />
+            
+        </dependencies>
+        <module-alias xmlns="urn:jboss:module:1.1" name="org.apache.log4j" target-name="org.jboss.log4j.logmanager"/>
+    </deployment>
+</jboss-deployment-structure>

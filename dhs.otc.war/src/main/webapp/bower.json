@@ -1,0 +1,28 @@
+{
+  "name": "DHS_OTC",
+  "description": "this the description",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "businessDecision;dhs_otc"
+  ],
+  "authors": [
+    "Bessem Hmidi"
+  ],
+  "license": "copyright",
+  "homepage": "http://www.businessdecision.us",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.3",
+    "angular-resource": "^1.5.3",
+    "angular-route": "^1.5.5"
+  }
+}

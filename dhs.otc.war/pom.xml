@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.adoa.azportal</groupId>
+		<artifactId>dhs.otc.pom</artifactId>
+		<version>${project.version}</version>
+	</parent>
+	<artifactId>dhs.otc.war</artifactId>
+	<packaging>war</packaging>
+
+	<properties>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<project.build.finalName>${finalName}</project.build.finalName>
+		<wildfly.deployment.filename>${project.build.finalName}.${project.packaging}</wildfly.deployment.filename>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.adoa.azportal</groupId>
+			<artifactId>dhs.otc.ejb</artifactId>
+			<version>${project.version}</version>
+			<type>ejb</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+
+
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${wildfly.plugin.version}</version>
+				<executions>
+				
+				
+				 <execution>
+                        <id>add-datasource</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                        <configuration>
+                            <address>subsystem=datasources,data-source=java:/dhsotcDs</address>
+                            <resources>
+                                <resource>
+                                    <properties>
+                                        <jndi-name>java:/dhsotcDs</jndi-name>
+                                        <enabled>true</enabled>
+                                        <connection-url>jdbc:sqlserver://localhost:1433;databaseName=DHSOTC;</connection-url>
+                                        <driver-class>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver-class>
+                                        <driver-name>msSql</driver-name>
+                                        <user-name>dhsotcuser</user-name>
+                                        <password>pwd4dhsotc</password>
+                                    </properties>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+				
+				
+					<execution>
+						<id>default-install</id>
+						<phase>install</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+
+					<execution>
+						<id>default-clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>undeploy</goal>
+						</goals>
+					</execution>
+
+				</executions>
+			</plugin>
+
+
+
+		</plugins>
+
+
+	</build>
+</project>

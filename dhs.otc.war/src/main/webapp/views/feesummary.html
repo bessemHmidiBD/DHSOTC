@@ -1,0 +1,16 @@
+<h1>Summary of Fee Charges</h1>
+
+
+
+<!-- 
+<p>
+									You will be paying the License and Miscellaneous fees on the <a:outputPanel rendered="#{(renewal.orders.licenseType.id lt 10)}"> Facility ID </a:outputPanel>
+									<a:outputPanel rendered="#{(renewal.orders.licenseType.id gt 9)}"> Invoice Number </a:outputPanel>listed below. To continue to the checkout utility 
+									select the "Proceed to Checkout" button.  To select a different license to pay or adjust fees select 
+									the "Back" button.  To quit without paying, select the "Logout" link.
+								</p> -->
+
+
+{{vm.feeSummaryData}}
+
+<button ng-click="vm.proceed()">PROCEED TO CHECKOUT</button>

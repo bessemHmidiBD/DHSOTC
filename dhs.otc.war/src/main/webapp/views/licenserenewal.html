@@ -1,0 +1,77 @@
+<h1>licenserenewal FORM   Username:{{userId}}</h1>
+
+
+<ul>
+<li ng-repeat="m in vm.messages">{{m.severity}} : {{m.message}}</li>
+</ul>
+
+    <label for="licenseTypeSelection"> License Type: </label><br>
+    
+    <select name="licenseTypeSelection" id="licenseTypeSelection" ng-model="licenseType" ng-change="vm.licenseTypeSelectionChanged(licenseType)" >
+      <option value="">---Select License Type---</option>  <!-- not selected / blank option -->
+
+      <option ng-repeat="op in vm.licenseTypes" value="{{op|json}}">{{op.description}}</option> <!-- interpolation -->
+      
+    </select><br>
+
+ <label>Facility ID:</label>
+ <input  ng-model="vm.renewalInputs.facilityId" empty-to-null type="text">
+
+
+<div ng-show="vm.childCare">
+
+<input type="checkbox"
+       ng-model="vm.renewalInputs.empowerPack"
+       [name="emPack"]
+      >
+    <!--    [ng-true-value="expression"]
+       [ng-false-value="expression"]
+       [ng-change="string"] --> 
+ <label for="emPack"> Use Empower Pack? </label>
+
+<input type="checkbox"
+       ng-model="vm.renewalInputs.lateFee"
+       [name="lateFee"]
+      >
+    <!--    [ng-true-value="expression"]
+       [ng-false-value="expression"]
+       [ng-change="string"] --> 
+
+<label for="lateFee">  Add Late Fee? </label>
+</div>
+
+<div ng-show="vm.other">
+
+<label>Number of beds:</label>
+<input ng-model="vm.renewalInputs.numberOfBeds" empty-to-null type="number">
+
+</div>
+
+
+<div ng-show="vm.invoice">
+
+<label>Invoice Number:</label>
+<input ng-model="vm.renewalInputs.invoiceNumber" empty-to-null type="number">
+
+</div>
+
+<div ng-show="vm.copyFee">
+
+<label>Copy Fee:</label>
+<input ng-model="vm.renewalInputs.copyFees" empty-to-null type="number">
+
+</div>
+
+
+<div ng-show="vm.amount">
+
+<label>Ammount:</label>
+<input ng-model="vm.renewalInputs.amountPenality" empty-to-null type="number">
+
+</div>
+
+<button ng-click="vm.submit()"> Send</button>
+
+<!-- 
+<h4>{{vm.renewalInputs|json}}</h4>
+ -->
